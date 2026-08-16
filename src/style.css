@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body,
+#app {
+  height: 100vh;
+  width: 100%;
+}
+#app {
+  border: none !important;
+  max-width: unset !important;
+}
+.common-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.el-aside {
+  width: 200px;
+  background: #6b92c2; /* 侧边蓝色 */
+}
+.el-container.is-vertical {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+.el-header {
+  height: 80px;
+  background: #82a8d8; /* 顶部Header蓝色 */
+}
+.el-main {
+  flex: 1;
+  background: #9c7cd9; /* 主体紫色区域 */
+}
