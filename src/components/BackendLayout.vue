@@ -1,6 +1,6 @@
 <template>
 <div class="backend-layout">
-    <el-container>
+    <el-container class="main-container">
         <sidebar/>
     <el-container>
     <el-header>
@@ -16,6 +16,9 @@
 <style lang="scss" scoped>
     .backend-layout {
         height: 100vh;
+        .main-container {
+            height: 100vh;
+        }
     }
 </style>
 <script setup>
