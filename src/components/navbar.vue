@@ -1,7 +1,7 @@
 <template>
     <div class="navbar">
         <div class="flex-box">
-            <el-button <!--type="primary"变成蓝色-->
+            <el-button @click="handleCollapse" type="primary" <!--type="primary"变成蓝色-->
                 <el-icon><Expand /></el-icon>
             </el-button>
             <p class="page-title">导航</p>
@@ -27,6 +27,10 @@
 
 
 <script setup>
+import { ref } from 'vue'
+import { useAdminStore } from '@/stores/admin'
+
+
     const handleCommand = (command) => {
         if(command === 'logout') {
             //console.log('退出登录')打印看看点击有效吗
@@ -36,12 +40,15 @@
             // 处理个人中心逻辑
         //}
     }
+    const handleCollapse = () => {
+        useAdminStore().toggleCollapse()
+    }
 </script>
 
 
 <style lang="scss" scoped>
 .navbar {
-    height: 64px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;

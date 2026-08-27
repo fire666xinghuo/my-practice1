@@ -1,15 +1,18 @@
 <template>
-    <el-aside width="264px">
+    <el-aside :width="isCollapse ? '64px' : '264px'">
         <el-menu 
+        :collapse="isCollapse"
+        :collapse-transition="false"
         default-active="2" 
         @open="handleOpen" 
         @close="handleClose"
         class='menu-style'
         >
             <div class="brand">
-                <el-image style="width:50px;height:50px; margin-right:10px;" :src="iconUrl" alt="logo" />
+                <el-image :style="{ width: isCollapse ? '33px' : '50px', height: isCollapse ? '33px' : '50px', marginRight: isCollapse ? '0px' : '10px' }" :src="iconUrl" alt="logo" />
+                <!--<el-image src="@/assets/images/112.jpg" />-->
                 <!--<el-image src="https://picsum.photos/id/237/100/100" />-->
-                <div class="info-card">
+                <div v-show="!isCollapse" class="info-card">
                     <h2 class="brand-tatle">心理健康AI助手</h2>
                     <p class="brand-subtitle">管理后台</p>
                 </div>
@@ -24,10 +27,14 @@
     </el-aside>
 </template>
 <script setup>
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAdminStore } from '@/stores/admin'
+
 const router = useRouter()
 
 const iconUrl = new URL('@/assets/images/111.png', import.meta.url).href
+//const iconUrl = new URL('@/assets/images/112.jpg', import.meta.url).href事实证明其实jpg也可以用
 //console.log(router,'router')   打印路由信息
 
 /*handleOpen=()=>{
@@ -36,6 +43,7 @@ const iconUrl = new URL('@/assets/images/111.png', import.meta.url).href
 handleClose=()=>{
     console.log('close')
 }*/
+ const isCollapse = computed(()=>useAdminStore().isCollapse)
 const selectMenu = (key) => {
     console.log(key)//打印点击的菜单路径
     const currentRoute = router.options.routes[0]

@@ -6,8 +6,8 @@
     <el-header>
         <navbar/>
     </el-header>
-    <el-main>
-        <router-view></router-view>
+    <el-main class="main-container">
+        <router-view class="content-container"></router-view>
     </el-main>
     </el-container>
     </el-container>
@@ -16,8 +16,16 @@
 <style lang="scss" scoped>
     .backend-layout {
         height: 100vh;
+        .el-header {
+            height: 74px !important;
+        }
         .main-container {
             height: 100vh;
+            .content-container {
+                padding: 20px;
+                background-color: #fff;
+                min-height: calc(100vh - 74px);
+            }
         }
     }
 </style>
