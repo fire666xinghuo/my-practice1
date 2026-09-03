@@ -33,7 +33,7 @@
 </template>
 <script setup>
 import { ref, reactive } from 'vue'
-//import { login } from '@/api/admin'
+import { login } from '@/api/admin'
 import { useRouter } from 'vue-router'
 
 const ruleFormRef = ref()
@@ -68,7 +68,7 @@ const submitForm = async (formEl) => {
                 localStorage.setItem('userInfo', JSON.stringify(data.userInfo))
                 // 根据用户角色决定跳转的路径
                 if (data.userInfo.userType === 2) {
-                    router.push('/back/dashboard')
+                    router.push('/wocao/dashboard')
                 } else {
                     router.push('/')
                 }
